@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ -n "$FAKETIME" ]; then
-  date --set="$FAKETIME"
+  date -s "$FAKETIME"
 fi
 
 # Запускаем переданную команду
