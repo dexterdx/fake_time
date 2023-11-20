@@ -9,7 +9,6 @@ services:
     ports:
       - "2222:22"
       - "123:123/udp"
-    command: /usr/local/bin/set_fake_time.sh tail -f /dev/null
     environment:
       - ROOT_PASSWORD=rootpassword
       - TZ=Europe/Moscow
