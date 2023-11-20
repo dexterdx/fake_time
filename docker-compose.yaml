@@ -1,0 +1,20 @@
+version: '3'
+services:
+  ubuntu-ssh:
+    image: ubuntu
+    cap_add:
+      - SYS_TIME
+    ports:
+      - "2222:22"  # Перенаправляем порт для SSH
+      - "123:123/udp"  # Открываем порт для NTP (UDP)
+
+    command: tail -f /dev/null  # Запускаем пустую команду, чтобы контейнер не завершался сразу после старта
+
+    # Добавим некоторые опции для удобства использования SSH
+    environment:
+      - ROOT_PASSWORD=rootpassword  # Устанавливаем пароль для пользователя root
+      - TZ=Europe/Moscow
+      - FAKETIME="2022-12-02 00:00:00"
+
+    stdin_open: true  # Оставляем stdin открытым для возможности ввода
+    tty: true  # Привязываем к терминалу для взаимодействия с командной строкой
